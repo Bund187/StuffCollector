@@ -78,7 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ObjectBehaviour.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Object_.cs" />
+    <Compile Include="Assets\Scripts\Object_Diamond.cs" />
+    <Compile Include="Assets\Scripts\Object_Standard.cs" />
+    <Compile Include="Assets\Scripts\Object_Star.cs" />
     <Compile Include="Assets\Scripts\StuffSpawner.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,20 +5,23 @@ using UnityEngine;
 public class StuffSpawner : MonoBehaviour {
 
     public GameObject[] objetos= new GameObject[9];
-    public GameObject prefab;
+    public GameObject[] prefab= new GameObject[6];
 
-    public int randomQuantity = 50;
+    private int randomQuantity = 20;
 
     void Update () {
 
-        //if(GetComponent<ObjectBehaviour>().IsEnd==false)
-            ObjectSpawner();
-        
+        ObjectSpawner();
+        if(randomQuantity <= 0)
+        {
+            randomQuantity = 1;
+        }
     }
 
     private void ObjectSpawner()
     {
-        int spawnObj = Random.Range(0, randomQuantity);
+        int spawnObj = Random.Range(0, RandomQuantity);
+        int objectType = Random.Range(0, 100);
 
         if (spawnObj == 0)
         {
@@ -27,9 +30,27 @@ public class StuffSpawner : MonoBehaviour {
 
             if (repeatedI!=i){
                 repeatedI = i;
-                GameObject go = Instantiate(prefab, objetos[i].transform.position, Quaternion.identity);
+                if(objectType<95)
+                    Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y+1) , Quaternion.identity);
+                else if (objectType < 99 && objectType > 75)
+                    Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
+                else
+                    Instantiate(prefab[2], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
             }
 
+        }
+    }
+
+    public int RandomQuantity
+    {
+        get
+        {
+            return randomQuantity;
+        }
+
+        set
+        {
+            randomQuantity = value;
         }
     }
 }
