@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class Object_Standard : Object_ {
 
-    private void Start()
-    {
-       
-    }
-
     // Update is called once per frame
     void Update () {
         Move();
@@ -22,10 +17,10 @@ public class Object_Standard : Object_ {
         numberDestoyed++;
     }
 
-    public override void Move()
-    {
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
-    }
+    //public override void Move()
+    //{
+    //    transform.Translate(Vector3.down * Time.deltaTime * speed);
+    //}
 
     public override void End() 
     {

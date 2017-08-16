@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Object_Star : Object_ {
 
+    private float ownSpeed;
+
     private void Start()
     {
-        //Speed = 3;
+        ownSpeed = 3;
     }
-
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -34,7 +34,7 @@ public class Object_Star : Object_ {
 
     public override void Move()
     {
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
+        transform.Translate(Vector3.down * Time.deltaTime * ownSpeed);
     }
 
     public override void End()
