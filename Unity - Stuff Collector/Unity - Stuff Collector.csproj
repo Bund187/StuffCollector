@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BonusManager.cs" />
     <Compile Include="Assets\Scripts\CollectedStuffScore.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GarbageBehaviour.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\Object_Diamond.cs" />
     <Compile Include="Assets\Scripts\Object_Standard.cs" />
     <Compile Include="Assets\Scripts\Object_Star.cs" />
+    <Compile Include="Assets\Scripts\Object_Strawberry.cs" />
     <Compile Include="Assets\Scripts\Object_Uranium.cs" />
     <Compile Include="Assets\Scripts\Object_Weight.cs" />
     <Compile Include="Assets\Scripts\StuffSpawner.cs" />

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,11 +15,6 @@ public class Object_Standard : Object_ {
         Destroy(this.gameObject);
         numberDestoyed++;
     }
-
-    //public override void Move()
-    //{
-    //    transform.Translate(Vector3.down * Time.deltaTime * speed);
-    //}
 
     public override void End() 
     {

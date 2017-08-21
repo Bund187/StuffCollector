@@ -5,13 +5,16 @@ using UnityEngine;
 public class StuffSpawner : MonoBehaviour {
 
     public GameObject[] objetos= new GameObject[9];
-    public GameObject[] prefab= new GameObject[6];
+    public GameObject[] prefab= new GameObject[7];
+    public GameObject goGameController;
 
+    private bool noSpawn;
     private int randomQuantity = 30;
-
+    
     void Update () {
+        if(!noSpawn)
+            ObjectSpawner();
 
-        ObjectSpawner();
         if(randomQuantity <= 0)
         {
             randomQuantity = 1;
@@ -64,6 +67,19 @@ public class StuffSpawner : MonoBehaviour {
         set
         {
             randomQuantity = value;
+        }
+    }
+
+    public bool NoSpawn
+    {
+        get
+        {
+            return noSpawn;
+        }
+
+        set
+        {
+            noSpawn = value;
         }
     }
 }

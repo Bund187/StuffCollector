@@ -15,7 +15,7 @@ public class Object_Diamond : Object_ {
     private void OnMouseDown()
     {
         durability++;
-        if (durability >= 5)
+        if (durability >= 3)
         {
             Destroy(this.gameObject);
             numberDestoyed++;
