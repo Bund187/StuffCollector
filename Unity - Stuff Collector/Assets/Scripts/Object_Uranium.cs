@@ -21,9 +21,9 @@ public class Object_Uranium : Object_ {
 
     private void OnMouseDown()
     {
+        GameObject.Find("BonusManager").GetComponent<BonusManager>().IsManagerOn = true;
         GameObject.Find("BonusManager").GetComponent<BonusManager>().Manager();
         
-        //numberDestoyed++;
     }
     
     //private void Touch()
@@ -62,15 +62,4 @@ public class Object_Uranium : Object_ {
     //{
     //    transform.Translate(dragPosition * Time.deltaTime * 0.1f);
     //}
-
-    public override void End()
-    {
-        if (transform.position.y < -5)
-        {
-            Time.timeScale = 0;
-            isEnd = true;
-        }
-
-        //TODO end of the game
-    }
 }

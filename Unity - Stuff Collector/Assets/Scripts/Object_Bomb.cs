@@ -11,7 +11,16 @@ public class Object_Bomb : Object_ {
 
     private void OnMouseDown()
     {
-        End();
+        Destroy(this.gameObject);
+        print("heart nº=" + GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter);
+        if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
+        {
+            End();
+        }
+        else
+        {
+            GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
+        }
     }
     
     public override void End()

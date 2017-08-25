@@ -6,34 +6,61 @@ public class BonusManager : MonoBehaviour {
 
     List<GameObject> gos = new List<GameObject>();
     List<GameObject> gosBonus = new List<GameObject>();
-    int j = 0;
     float timeStart, timeFinal;
+    int heartCounter, bonusDestroyed;
+    bool isManagerOn;
 
+    public GameObject[] hearts = new GameObject[3];
+    
+    private void Start()
+    {
+        bonusDestroyed = 0;
+        heartCounter = -1;
+    }
     void Update()
     {
         timeFinal = Time.time;
-        Timer();
+        if(isManagerOn)
+            Timer();
+    }
+
+    public void BonusReached()
+    {
+        if (bonusDestroyed == gos.Count)
+        {
+            if (heartCounter < 2)
+            {
+                heartCounter++;
+                hearts[heartCounter].SetActive(true);
+                bonusDestroyed = 0;
+            }
+        }
+    }
+
+    public void BonusLoosing()
+    {
+        if (heartCounter >= 0)
+        {
+            hearts[heartCounter].SetActive(false);
+            heartCounter--;
+            if (heartCounter < -1) heartCounter = -1;
+        }
     }
 
     public void Manager()
     {
         timeStart = Time.time;
-        print("TimeStart=" + timeStart);
         
         //Impedimos que se sigan creando nuevos objetos
         GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = true;
-
+        
         //Recorremos los objetos con tag bomb y stuff y los añadimos al list
-        foreach (GameObject bombs in GameObject.FindGameObjectsWithTag("Bomb"))
-        {
-            gos.Add(bombs);
-        }
-        foreach(GameObject stuff in GameObject.FindGameObjectsWithTag("Stuff"))
-        {
-            gos.Add(stuff);
-        }
-      
-        print("First gos number " + gos.Count);
+        gos=Utils.AddObjToList(GameObject.FindGameObjectsWithTag("Bomb"),gos);
+        gos=Utils.AddObjToList(GameObject.FindGameObjectsWithTag("Stuff"),gos);
+
+        //Destruimos los objetos especiales
+        Utils.DestroyObjFromArray(GameObject.FindGameObjectsWithTag("Uranium"));
+        
         //Si el list contiene algo
         if (gos.Count > 0)
         {
@@ -45,20 +72,32 @@ public class BonusManager : MonoBehaviour {
                     Destroy(gos[i]);
                     gos.RemoveAt(i);
                 }
-                //Vamos instanciando los objetos de bonus en la posicion de los objetos del list y ponemos estos como no activos (para luego activarlos)
-                Instantiate(GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().prefab[6], gos[i].transform.position, Quaternion.identity);
-                gos[i].SetActive(false);
-                j++;
+            }
+
+            //Vamos instanciando los objetos de bonus en la posicion de los objetos del list y ponemos estos como no activos (para luego activarlos)
+            foreach (GameObject obj in gos)
+            {
+                Instantiate(GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().prefab[6], obj.transform.position, Quaternion.identity);
+                obj.SetActive(false);
                 
             }
         }
-        print("Final gos number " + gos.Count + "Stuff number: " + j);
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Bonus").Length-1 ; i++)
+        {
+            if (gos[i].transform.position.y >= GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().objetos[0].transform.position.y)
+            {
+                Destroy(gos[i]);
+                gos.RemoveAt(i);
+            }
+        }
+        
     }
 
     public void Timer()
     {
-        if (Input.GetKeyDown(KeyCode.A) /*timeFinal >= (timeStart + 3)*/)
+        if (timeFinal >= (timeStart + 3))
         {
+            bonusDestroyed = 0;
             //Recorremos todos los objetos Bonus y los metemos en un List
             foreach (GameObject stuff in GameObject.FindGameObjectsWithTag("Bonus"))
             {
@@ -84,7 +123,51 @@ public class BonusManager : MonoBehaviour {
             {
                 Destroy(stuff);
             }
+            
+            gos.Clear();
+            gosBonus.Clear();
             GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
+            isManagerOn = false;
+            
+        }
+    }
+
+    public int BonusDestroyed
+    {
+        get
+        {
+            return bonusDestroyed;
+        }
+
+        set
+        {
+            bonusDestroyed = value;
+        }
+    }
+
+    public int HeartCounter
+    {
+        get
+        {
+            return heartCounter;
+        }
+
+        set
+        {
+            heartCounter = value;
+        }
+    }
+
+    public bool IsManagerOn
+    {
+        get
+        {
+            return isManagerOn;
+        }
+
+        set
+        {
+            isManagerOn = value;
         }
     }
 }

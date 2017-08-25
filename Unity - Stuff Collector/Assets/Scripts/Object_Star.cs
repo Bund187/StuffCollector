@@ -36,15 +36,4 @@ public class Object_Star : Object_ {
     {
         transform.Translate(Vector3.down * Time.deltaTime * ownSpeed);
     }
-
-    public override void End()
-    {
-        if (transform.position.y < -5)
-        {
-            Time.timeScale = 0;
-            isEnd = true;
-        }
-
-        //TODO end of the game
-    }
 }

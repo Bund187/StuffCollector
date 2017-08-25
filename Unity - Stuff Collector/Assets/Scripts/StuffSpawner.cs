@@ -10,8 +10,14 @@ public class StuffSpawner : MonoBehaviour {
 
     private bool noSpawn;
     private int randomQuantity = 30;
-    
+
+    private void Start()
+    {
+        noSpawn = true;
+    }
+
     void Update () {
+
         if(!noSpawn)
             ObjectSpawner();
 
@@ -34,24 +40,25 @@ public class StuffSpawner : MonoBehaviour {
             if (repeatedI!=i){
                 repeatedI = i;
 
+                float distance = 0.3f;
                 //Line for the standard Objects
                 if (objectType<35) 
-                    Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y+1) , Quaternion.identity);
+                    Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y+ distance) , Quaternion.identity);
                 //Line for the Diamonds
                 else if (objectType < 79 && objectType >= 55)
-                    Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
+                    Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 //Line for the Uraniums
                 else if (objectType < 89 && objectType >= 79)
-                    Instantiate(prefab[3], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
+                    Instantiate(prefab[3], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 //Line for the Bombs
                 else if (objectType < 55 && objectType >= 35)
-                    Instantiate(prefab[4], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
+                    Instantiate(prefab[4], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 //Line for the Weights
                 else if (objectType < 99 && objectType >= 89)
-                    Instantiate(prefab[5], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
+                    Instantiate(prefab[5], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 //Line for the Stars
                 else
-                    Instantiate(prefab[2], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + 1), Quaternion.identity);
+                    Instantiate(prefab[2], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
             }
 
         }

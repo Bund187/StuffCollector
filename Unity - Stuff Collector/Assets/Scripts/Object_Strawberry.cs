@@ -5,14 +5,16 @@ using UnityEngine;
 public class Object_Strawberry : Object_
 {
     private Vector2 position;
-
+    
     private void OnMouseDown()
     {
         position = transform.position;
         Destroy(this.gameObject);
+        GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusDestroyed++;
+        GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusReached();
         numberDestoyed++;
     }
-
+   
     public override void End()
     {
         if (transform.position.y < -5)

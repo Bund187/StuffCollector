@@ -22,14 +22,4 @@ public class Object_Diamond : Object_ {
         }
     }
 
-    public override void End()
-    {
-        if (transform.position.y < -5)
-        {
-            Time.timeScale = 0;
-            isEnd = true;
-        }
-
-        //TODO end of the game
-    }
 }
