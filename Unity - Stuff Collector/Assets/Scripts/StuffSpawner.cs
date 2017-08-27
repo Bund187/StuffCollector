@@ -13,7 +13,7 @@ public class StuffSpawner : MonoBehaviour {
 
     private void Start()
     {
-        noSpawn = true;
+        //noSpawn = true;
     }
 
     void Update () {

@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
         nextLevel = 10;
         levelNumber = 1;
         cuakSpeed = 1;
-        isTutorial = true;
+        isTutorial = false;
     }
 
     private void Start()
@@ -107,6 +107,7 @@ public class GameController : MonoBehaviour {
                 cuak.SetActive(false);
                 isTutorial = false;
             }
+
         }
 
 
