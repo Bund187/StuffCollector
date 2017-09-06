@@ -28,6 +28,7 @@ public class BonusManager : MonoBehaviour {
     {
         if (bonusDestroyed == gos.Count)
         {
+            print("Add heart nº" + heartCounter);
             if (heartCounter < 2)
             {
                 heartCounter++;
@@ -39,6 +40,7 @@ public class BonusManager : MonoBehaviour {
 
     public void BonusLoosing()
     {
+        print("loosing the heart nº" + heartCounter);
         if (heartCounter >= 0)
         {
             hearts[heartCounter].SetActive(false);
@@ -127,6 +129,7 @@ public class BonusManager : MonoBehaviour {
             gos.Clear();
             gosBonus.Clear();
             GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
+            print("spawning");
             isManagerOn = false;
             
         }

@@ -42,8 +42,8 @@ public class StuffSpawner : MonoBehaviour {
 
                 float distance = 0.3f;
                 //Line for the standard Objects
-                if (objectType<35) 
-                    Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y+ distance) , Quaternion.identity);
+                if (objectType < 35)
+                    Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 //Line for the Diamonds
                 else if (objectType < 79 && objectType >= 55)
                     Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);

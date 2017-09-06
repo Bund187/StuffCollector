@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Object_Uranium : Object_ {
 
+    public GameObject destroyed;
+
+    private GameObject goDestroy;
     private Rigidbody2D rb;
     
 
@@ -16,16 +20,23 @@ public class Object_Uranium : Object_ {
     {
         Move();
         End();
-        
+       // Touch();
     }
 
     private void OnMouseDown()
     {
         GameObject.Find("BonusManager").GetComponent<BonusManager>().IsManagerOn = true;
         GameObject.Find("BonusManager").GetComponent<BonusManager>().Manager();
-        
+        goDestroy = Instantiate(destroyed, transform.position, Quaternion.identity);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
     }
-    
+
+    //protected override void TouchAction()
+    //{
+    //    GameObject.Find("BonusManager").GetComponent<BonusManager>().IsManagerOn = true;
+    //    GameObject.Find("BonusManager").GetComponent<BonusManager>().Manager();
+    //}
+
     //private void Touch()
     //{
     //    Vector2 dragPosition=new Vector2(0,0);
