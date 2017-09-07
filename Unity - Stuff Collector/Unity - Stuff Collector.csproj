@@ -93,10 +93,13 @@
     <Compile Include="Assets\Scripts\Object_Strawberry.cs" />
     <Compile Include="Assets\Scripts\Object_Uranium.cs" />
     <Compile Include="Assets\Scripts\Object_Weight.cs" />
+    <Compile Include="Assets\Scripts\SceneChangeManager.cs" />
     <Compile Include="Assets\Scripts\ScreenFlash.cs" />
     <Compile Include="Assets\Scripts\StuffSpawner.cs" />
     <Compile Include="Assets\Scripts\TextAppearanceManager.cs" />
     <Compile Include="Assets\Scripts\TimeScore.cs" />
+    <Compile Include="Assets\Scripts\TitleController.cs" />
+    <Compile Include="Assets\Scripts\TutorialCheckBoxManager.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

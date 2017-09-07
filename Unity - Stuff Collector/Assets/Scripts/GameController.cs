@@ -18,7 +18,11 @@ public class GameController : MonoBehaviour {
         index = 0;
         nextLevel = 10;
         levelNumber = 1;
-        isTutorial = true;
+        if(GameObject.FindGameObjectWithTag("TutorialCheck"))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("TutorialCheck"));
+        }
+       // isTutorial = true;
     }
 
     private void Start()
@@ -37,7 +41,7 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
-        if (isTutorial) Tutorial();
+        if (TutorialCheckBoxManager.isTutorialOn) Tutorial();
 
         LevelUp();
         
@@ -86,8 +90,7 @@ public class GameController : MonoBehaviour {
 
             rider.SetActive(false);
             riderOut.SetActive(true);
-           
-
+            GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
         }
 
 
