@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Object_Uranium : Object_ {
 
-    public GameObject destroyed;
+    public GameObject destroyed, score;
 
     private GameObject goDestroy;
     private Rigidbody2D rb;
@@ -14,6 +14,7 @@ public class Object_Uranium : Object_ {
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        textScore = "1500";
     }
 
     void Update()
@@ -29,6 +30,8 @@ public class Object_Uranium : Object_ {
         GameObject.Find("BonusManager").GetComponent<BonusManager>().Manager();
         goDestroy = Instantiate(destroyed, transform.position, Quaternion.identity);
         GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+        GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 1500;
+        ScoreStuff(score);
     }
 
     //protected override void TouchAction()

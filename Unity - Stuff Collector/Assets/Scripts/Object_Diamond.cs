@@ -9,12 +9,13 @@ public class Object_Diamond : Object_ {
     private float startTime;
     private GameObject goDestroy;
 
-    public GameObject brokenTv, destroyedTv;
+    public GameObject brokenTv, destroyedTv, score;
     public Sprite[] sprites = new Sprite[3];
 
     private void Start()
     {
         brokenTv=Instantiate(brokenTv, transform.position, Quaternion.identity);
+        
     }
 
     void Update()
@@ -41,12 +42,17 @@ public class Object_Diamond : Object_ {
             numberDestoyed++;
             goDestroy=Instantiate(destroyedTv, transform.position, Quaternion.identity);
             GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+            textScore = "1000";
+            GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 1000;
         }
         else
         {
             brokenTv.SetActive(true);
             startTime = Time.time;
+            textScore = "500";
+            GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 500;
         }
+        ScoreStuff(score);
     }
     
     //protected override void TouchAction()

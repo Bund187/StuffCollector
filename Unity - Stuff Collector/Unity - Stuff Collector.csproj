@@ -93,8 +93,11 @@
     <Compile Include="Assets\Scripts\Object_Strawberry.cs" />
     <Compile Include="Assets\Scripts\Object_Uranium.cs" />
     <Compile Include="Assets\Scripts\Object_Weight.cs" />
+    <Compile Include="Assets\Scripts\RetryManager.cs" />
     <Compile Include="Assets\Scripts\SceneChangeManager.cs" />
     <Compile Include="Assets\Scripts\ScreenFlash.cs" />
+    <Compile Include="Assets\Scripts\ShakeScreenController.cs" />
+    <Compile Include="Assets\Scripts\StuffScoreController.cs" />
     <Compile Include="Assets\Scripts\StuffSpawner.cs" />
     <Compile Include="Assets\Scripts\TextAppearanceManager.cs" />
     <Compile Include="Assets\Scripts\TimeScore.cs" />

@@ -18,6 +18,8 @@ public class Object_Bomb : Object_ {
     {
         goDestroy=Instantiate(explosion, transform.position, Quaternion.identity);
         GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+        GameObject.Find("ShakeScreen").GetComponent<ShakeScreenController>().Shaker();
+        //GameObject.Find("TheEnd").GetComponent<EndManager>().gameOverBackground.SetActive(true);
         Destroy(gameObject);
         
     }

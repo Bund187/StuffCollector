@@ -5,17 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeManager : MonoBehaviour {
 
+    bool changeScene;
+
+    public GameObject transition;
+    public AudioSource theme;
+
 	void Update () {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    print("mouse");
-        //    SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
-        //}
+        if (changeScene)
+        {
+            transition.SetActive(true);
+            //StartCoroutine("FadeoutSound");
+            theme.volume -= 0.009f;
+            if (theme.volume <= 0)
+            {
+                SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+            }
+        }
     }
 
     private void OnMouseDown()
     {
-        print("mouse");
-        SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+        changeScene = true;
     }
+
+    //IEnumerator FadeoutSound()
+    //{
+    //    while (theme.volume > 0)
+    //    {
+    //        theme.volume -= 0.1f;
+    //        yield return null;
+    //    }
+    //}
 }

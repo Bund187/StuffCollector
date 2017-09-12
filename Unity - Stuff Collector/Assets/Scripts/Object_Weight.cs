@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Object_Weight : Object_ {
 
-    public GameObject destroyedSkate;
+    public GameObject destroyedSkate, score;
 
     private float ownSpeed;
     private GameObject goDestroy;
@@ -13,6 +13,7 @@ public class Object_Weight : Object_ {
     private void Start()
     {
         ownSpeed = 3;
+        textScore = "1000";
     }
     void Update()
     {
@@ -26,6 +27,8 @@ public class Object_Weight : Object_ {
         numberDestoyed++;
         goDestroy = Instantiate(destroyedSkate, transform.position, Quaternion.identity);
         GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+        GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 1000;
+        ScoreStuff(score);
     }
 
     public override void Move()

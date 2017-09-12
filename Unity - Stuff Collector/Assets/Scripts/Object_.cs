@@ -6,6 +6,10 @@ public abstract class Object_ : MonoBehaviour {
 
     public static int numberDestoyed = 0;
     public static float speed = 1;
+
+    GameObject instantiateScore;
+
+    protected string textScore;
     
     public virtual void Move()
     {
@@ -18,16 +22,25 @@ public abstract class Object_ : MonoBehaviour {
             if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
             {
                 GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
-                GameObject.Find("TheEnd").GetComponent<EndManager>().End();
+                GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd=true;
+                
             }
             else
             {
+                GameObject.Find("ShakeScreen").GetComponent<ShakeScreenController>().Shaker();
                 GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
             }
             Destroy(this.gameObject);
         }
     }
 
+    protected void ScoreStuff(GameObject obj)
+    {
+        //obj.GetComponent<StuffScoreController>().ScoreText = textScore;
+        print("text scrore is: " + textScore);
+        instantiateScore =  Instantiate(obj, new Vector2(transform.position.x + 0.35f, transform.position.y + 0.15f), Quaternion.identity);
+        instantiateScore.GetComponent<StuffScoreController>().ScoreText = textScore;
+    }
     //protected IEnumerator WaitXseconds()
     //{
     //    Destroy(gameObject);

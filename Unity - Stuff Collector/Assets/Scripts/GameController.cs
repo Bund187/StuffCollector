@@ -91,6 +91,7 @@ public class GameController : MonoBehaviour {
             rider.SetActive(false);
             riderOut.SetActive(true);
             GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
+            TutorialCheckBoxManager.isTutorialOn = false;
         }
 
 
@@ -101,7 +102,6 @@ public class GameController : MonoBehaviour {
     {
         if (Object_.numberDestoyed == nextLevel)
         {
-            print("Nivel superado");
             levelNumber++;
             Object_.speed += 0.3f;
             nextLevel = nextLevel * 2;
@@ -135,5 +135,30 @@ public class GameController : MonoBehaviour {
             isTutorial = value;
         }
     }
-    
+
+    public int NextLevel
+    {
+        get
+        {
+            return nextLevel;
+        }
+
+        set
+        {
+            nextLevel = value;
+        }
+    }
+
+    public int LevelNumber1
+    {
+        get
+        {
+            return levelNumber;
+        }
+
+        set
+        {
+            levelNumber = value;
+        }
+    }
 }

@@ -34,9 +34,9 @@ public class GarbageManager : MonoBehaviour {
                         {
                             if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
                             {
-                                if (destr.name.Contains("RocketDestroy"))
+                                if (destr.name.Contains("BombExplosion"))
                                 {
-                                    GameObject.Find("TheEnd").GetComponent<EndManager>().End();
+                                    GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd=true;
                                 }
 
                             }

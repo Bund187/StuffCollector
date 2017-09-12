@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Object_Star : Object_ {
 
+    public GameObject score;
+
     private float ownSpeed;
 
     private void Start()
     {
         ownSpeed = 3;
+        textScore = "5000";
     }
     void Update()
     {
@@ -32,7 +35,8 @@ public class Object_Star : Object_ {
         
         Destroy(this.gameObject);
         numberDestoyed++;
-        
+        ScoreStuff(score);
+        GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 5000;
     }
 
     public override void Move()
