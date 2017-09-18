@@ -22,9 +22,6 @@ public class CollectedStuffScore : MonoBehaviour {
             finalDestroyedScore.text = collectedStuff.text;
             score.text = realScore.ToString();
         }
-        
-        
-        
     }
 
     public int RealScore

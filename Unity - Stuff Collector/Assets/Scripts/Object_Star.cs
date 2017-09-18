@@ -6,23 +6,24 @@ using UnityEngine;
 public class Object_Star : Object_ {
 
     public GameObject score;
-
-    private float ownSpeed;
+    public AudioSource starDestroyAudio, starAppearAudio;
 
     private void Start()
     {
-        ownSpeed = 3;
         textScore = "5000";
+        starDestroyAudio = Instantiate(starDestroyAudio);
+        starAppearAudio = Instantiate(starAppearAudio);
+        starAppearAudio.Play();
     }
     void Update()
     {
         Move();
-        End();
-        
     }
 
     private void OnMouseDown()
     {
+        starAppearAudio.Stop();
+        starDestroyAudio.Play();
         GameObject.Find("ScreenFlash").GetComponent<ScreenFlash>().IsFlashing = true;
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Stuff");
         if (gos.Length > 0)
@@ -41,7 +42,7 @@ public class Object_Star : Object_ {
 
     public override void Move()
     {
-        transform.Translate(Vector3.down * Time.deltaTime * ownSpeed);
+        transform.Translate(Vector3.down * Time.deltaTime * (speed + GameObject.Find("GameController").GetComponent<GameController>().LevelNumber));
     }
 
     

@@ -11,6 +11,7 @@ public class EndManager : MonoBehaviour
     public GameObject gameOverBackground, filter;
     public GameObject[] gameOverGos;
     public Text totalTime;
+    public AudioSource gameoverAudio;
 
     private void Update()
     {
@@ -19,9 +20,11 @@ public class EndManager : MonoBehaviour
             End();
             if (gameOverBackground.activeSelf)
             {
+                gameoverAudio.PlayOneShot(gameoverAudio.clip);
+
                 if (gameOverBackground.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !gameOverBackground.GetComponent<Animator>().IsInTransition(0))
                 {
-                    foreach(GameObject go in gameOverGos)
+                    foreach (GameObject go in gameOverGos)
                     {
                         go.SetActive(true);
                     }

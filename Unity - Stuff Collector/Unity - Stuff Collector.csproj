@@ -79,11 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BonusManager.cs" />
+    <Compile Include="Assets\Scripts\BoundManager.cs" />
+    <Compile Include="Assets\Scripts\BrokenScreenEffect.cs" />
     <Compile Include="Assets\Scripts\CollectedStuffScore.cs" />
     <Compile Include="Assets\Scripts\EndManager.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GarbageManager.cs" />
     <Compile Include="Assets\Scripts\LevelScore.cs" />
+    <Compile Include="Assets\Scripts\MetalHeartAnimation.cs" />
     <Compile Include="Assets\Scripts\NewLevelAd.cs" />
     <Compile Include="Assets\Scripts\Object_.cs" />
     <Compile Include="Assets\Scripts\Object_Bomb.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="Assets\Scripts\TextAppearanceManager.cs" />
     <Compile Include="Assets\Scripts\TimeScore.cs" />
     <Compile Include="Assets\Scripts\TitleController.cs" />
+    <Compile Include="Assets\Scripts\TransitionStartManager.cs" />
     <Compile Include="Assets\Scripts\TutorialCheckBoxManager.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
   </ItemGroup>

@@ -14,7 +14,8 @@ public class StuffScoreController : MonoBehaviour {
         alpha = GetComponent<Text>().color.a;
         fadeSpeed = 0.03f;
         GetComponent<Text>().text = scoreText;
-        transform.parent = GameObject.Find("CanvasUpper").transform;
+        transform.SetParent(GameObject.Find("CanvasUpper").transform);
+        //transform.parent = GameObject.Find("CanvasUpper").transform;
         transform.localScale = new Vector2(1, 1);
         speed = 0.1f;
     }
@@ -37,7 +38,6 @@ public class StuffScoreController : MonoBehaviour {
         }
         else
         {
-            print("alpha=" + GetComponent<Text>().color.a);
             Destroy(this.gameObject);
         }
        

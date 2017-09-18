@@ -8,7 +8,7 @@ public class SceneChangeManager : MonoBehaviour {
     bool changeScene;
 
     public GameObject transition;
-    public AudioSource theme;
+    public AudioSource theme, tapAudio;
 
 	void Update () {
         if (changeScene)
@@ -25,6 +25,7 @@ public class SceneChangeManager : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        tapAudio.Play();
         changeScene = true;
     }
 

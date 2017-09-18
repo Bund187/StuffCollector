@@ -5,17 +5,23 @@ using UnityEngine;
 
 public class Object_Diamond : Object_ {
 
-    private int durability=0;
+    private int durability;
     private float startTime;
     private GameObject goDestroy;
 
     public GameObject brokenTv, destroyedTv, score;
     public Sprite[] sprites = new Sprite[3];
+    public AudioSource[] tvAudio=new AudioSource[3];
+    public AudioSource loseAudio;
 
     private void Start()
     {
         brokenTv=Instantiate(brokenTv, transform.position, Quaternion.identity);
-        
+        durability = 0;
+        for (int j=0;j<tvAudio.Length; j++) { 
+            tvAudio[j] = Instantiate(tvAudio[j]);
+        }
+        loseAudio = Instantiate(loseAudio);
     }
 
     void Update()
@@ -29,15 +35,20 @@ public class Object_Diamond : Object_ {
             brokenTv.SetActive(false);
             gameObject.GetComponent<SpriteRenderer>().sprite = sprites[durability];
         }
-
+        if (transform.position.y < -5)
+        {
+            loseAudio.PlayOneShot(loseAudio.clip);
+        }
     }
 
     private void OnMouseDown()
     {
+        tvAudio[durability].Play();
         durability++;
         
         if (durability >= 3)
         {
+            
             Destroy(this.gameObject);
             numberDestoyed++;
             goDestroy=Instantiate(destroyedTv, transform.position, Quaternion.identity);

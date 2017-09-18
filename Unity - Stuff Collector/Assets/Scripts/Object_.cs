@@ -19,16 +19,19 @@ public abstract class Object_ : MonoBehaviour {
     {
         if (transform.position.y < -5)
         {
-            if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
+            if (!transform.name.Contains("Bomb"))
             {
-                GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
-                GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd=true;
-                
-            }
-            else
-            {
-                GameObject.Find("ShakeScreen").GetComponent<ShakeScreenController>().Shaker();
-                GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
+                if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
+                {
+                    GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
+                    GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd = true;
+
+                }
+                else
+                {
+                    GameObject.Find("ShakeScreen").GetComponent<ShakeScreenController>().Shaker();
+                    GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
+                }
             }
             Destroy(this.gameObject);
         }
@@ -36,8 +39,6 @@ public abstract class Object_ : MonoBehaviour {
 
     protected void ScoreStuff(GameObject obj)
     {
-        //obj.GetComponent<StuffScoreController>().ScoreText = textScore;
-        print("text scrore is: " + textScore);
         instantiateScore =  Instantiate(obj, new Vector2(transform.position.x + 0.35f, transform.position.y + 0.15f), Quaternion.identity);
         instantiateScore.GetComponent<StuffScoreController>().ScoreText = textScore;
     }

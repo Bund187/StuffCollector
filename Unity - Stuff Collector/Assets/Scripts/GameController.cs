@@ -9,10 +9,10 @@ public class GameController : MonoBehaviour {
     private bool isTutorial;
     private string[] TutorialTexts = new string[10];
    
-    public GameObject rider, riderIn, riderOut, newLevel, tutorialTxt,txtShadow;
+    public GameObject rider, riderIn, riderOut, newLevel, tutorialTxt,txtShadow,transition;
     public GameObject[] stuffs = new GameObject[8];
     public GameObject[] arrows = new GameObject[8];
-
+    
     private void Awake()
     {
         index = 0;
@@ -41,7 +41,8 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
-        if (TutorialCheckBoxManager.isTutorialOn) Tutorial();
+        if(transition.GetComponent<TransitionStartManager>().Alpha<=0)
+            if (TutorialCheckBoxManager.isTutorialOn) Tutorial();
 
         LevelUp();
         
@@ -148,17 +149,5 @@ public class GameController : MonoBehaviour {
             nextLevel = value;
         }
     }
-
-    public int LevelNumber1
-    {
-        get
-        {
-            return levelNumber;
-        }
-
-        set
-        {
-            levelNumber = value;
-        }
-    }
+    
 }

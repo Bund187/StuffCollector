@@ -6,23 +6,31 @@ using UnityEngine;
 public class Object_Standard : Object_ {
 
     public GameObject destroyed, score;
+    public AudioSource destroyedAudio, loseAudio;
 
     private GameObject goDestroy;
 
     private void Start()
     {
         textScore = "500";
+        destroyedAudio = Instantiate(destroyedAudio);
+        loseAudio = Instantiate(loseAudio);
     }
 
     void Update()
     {
         Move();
         End();
-        //Touching();
+        if (transform.position.y < -5)
+        {
+            loseAudio.PlayOneShot(loseAudio.clip);
+            print("se cayó");
+        }
     }
 
     private void OnMouseDown()
     {
+        destroyedAudio.Play();
         Destroy(this.gameObject);
         numberDestoyed++;
         goDestroy = Instantiate(destroyed, transform.position, Quaternion.identity);

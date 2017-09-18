@@ -9,11 +9,12 @@ public class StuffSpawner : MonoBehaviour {
     public GameObject goGameController;
 
     private bool noSpawn;
-    private int randomQuantity = 30;
+    private int randomQuantity;
 
     private void Start()
     {
-        //noSpawn = true;
+        randomQuantity = 10;
+        
     }
 
     void Update () {
@@ -41,27 +42,51 @@ public class StuffSpawner : MonoBehaviour {
                 repeatedI = i;
 
                 float distance = 0.3f;
-                //Line for the standard Objects
-                if (objectType < 35)
-                    Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
-                //Line for the Diamonds
-                else if (objectType < 79 && objectType >= 55)
-                    Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
-                //Line for the Uraniums
-                else if (objectType < 89 && objectType >= 79)
+                if (goGameController.GetComponent<GameController>().LevelNumber >= 1)
+                {
+                    //Line for the Cassette
+                    if (objectType < 35)
+                        Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
+                }
+                if (goGameController.GetComponent<GameController>().LevelNumber >= 2)
+                {
+                    randomQuantity = 30;
+
+                    //Line for the TV
+                    if (objectType < 55 && objectType >= 35)
+                        Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
+                }
+                
+                //Line for the VR
+                if (objectType <= 58 && objectType >= 55)
                     Instantiate(prefab[3], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
+
                 //Line for the Bombs
-                else if (objectType < 55 && objectType >= 35)
-                    Instantiate(prefab[4], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
-                //Line for the Weights
-                else if (objectType < 99 && objectType >= 89)
-                    Instantiate(prefab[5], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
-                //Line for the Stars
-                else
-                    Instantiate(prefab[2], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
+                SpawnBomb(objectType, distance, i);
+
+                if (goGameController.GetComponent<GameController>().LevelNumber >= 3)
+                {
+                    //Line for the Skate
+                    if (objectType <= 96 && objectType > 81)
+                        Instantiate(prefab[5], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
+                }
+                if (goGameController.GetComponent<GameController>().LevelNumber >= 4)
+                {
+                    //Line for the Stars
+                    if (objectType <= 100 && objectType > 96)
+                        Instantiate(prefab[2], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
+                }
             }
 
         }
+    }
+
+    public void SpawnBomb(int objectType, float distance, int i)
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Stuff");
+
+        if (objectType <= 81 && objectType > 58)
+            Instantiate(prefab[4], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
     }
 
     public int RandomQuantity

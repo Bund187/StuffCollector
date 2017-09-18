@@ -32,17 +32,16 @@ public class GarbageManager : MonoBehaviour {
                     {
                         if (destr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !destr.GetComponent<Animator>().IsInTransition(0))
                         {
-                            if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
+                            if (destr.name.Contains("BombExplosion"))
                             {
-                                if (destr.name.Contains("BombExplosion"))
+                                if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
                                 {
-                                    GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd=true;
+                                    GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd = true;
                                 }
-
-                            }
-                            else
-                            {
-                                GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
+                                else
+                                {
+                                    GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
+                                }
                             }
                             Destroy(destr);
                         }

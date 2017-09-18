@@ -8,6 +8,7 @@ public class RetryManager : MonoBehaviour {
     public Text[] scoreToReset;
     public GameObject stuffSpawner, gameOverBackg,theEnd, redFilter, gameController,timeController;
     public GameObject[] gameoverGos;
+    public AudioSource gameoverAudio;
 
     void Update () {
         if (Input.GetMouseButtonDown(0))
@@ -19,6 +20,7 @@ public class RetryManager : MonoBehaviour {
 
     public void Reset()
     {
+        gameoverAudio.Stop();
         foreach(Text go in scoreToReset)
         {
             if (go.name.Equals("TimeScore"))

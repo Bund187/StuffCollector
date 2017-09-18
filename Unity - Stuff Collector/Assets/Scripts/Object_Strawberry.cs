@@ -7,6 +7,7 @@ public class Object_Strawberry : Object_
 {
    
     public GameObject destroyedDisk, score;
+    public AudioSource diskAudio;
 
     private GameObject goDestroy;
     private Vector2 position;
@@ -14,10 +15,12 @@ public class Object_Strawberry : Object_
     private void Start()
     {
         textScore = "1000";
+        diskAudio = Instantiate(diskAudio);
     }
 
     private void OnMouseDown()
     {
+        diskAudio.Play();
         position = transform.position;
         Destroy(this.gameObject);
         GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusDestroyed++;

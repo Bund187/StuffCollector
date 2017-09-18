@@ -6,23 +6,29 @@ using UnityEngine;
 public class Object_Weight : Object_ {
 
     public GameObject destroyedSkate, score;
+    public AudioSource skateAudio, loseAudio;
 
-    private float ownSpeed;
     private GameObject goDestroy;
 
     private void Start()
     {
-        ownSpeed = 3;
         textScore = "1000";
+        skateAudio = Instantiate(skateAudio);
+        loseAudio = Instantiate(loseAudio);
     }
     void Update()
     {
         Move();
         End();
+        if (transform.position.y < -5)
+        {
+            loseAudio.PlayOneShot(loseAudio.clip);
+        }
     }
 
     private void OnMouseDown()
     {
+        skateAudio.Play();
         Destroy(this.gameObject);
         numberDestoyed++;
         goDestroy = Instantiate(destroyedSkate, transform.position, Quaternion.identity);
@@ -33,7 +39,8 @@ public class Object_Weight : Object_ {
 
     public override void Move()
     {
-        transform.Translate(Vector3.down * Time.deltaTime * ownSpeed);
+        
+        transform.Translate(Vector3.down * Time.deltaTime * (speed+ GameObject.Find("GameController").GetComponent<GameController>().LevelNumber));
     }
 
     //protected override void TouchAction()

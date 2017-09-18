@@ -6,26 +6,30 @@ using UnityEngine;
 public class Object_Uranium : Object_ {
 
     public GameObject destroyed, score;
+    public AudioSource glassesAudio, loseAudio;
 
     private GameObject goDestroy;
-    private Rigidbody2D rb;
-    
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         textScore = "1500";
+        glassesAudio = Instantiate(glassesAudio);
+        loseAudio = Instantiate(loseAudio);
     }
 
     void Update()
     {
         Move();
         End();
-       // Touch();
+        if (transform.position.y < -5)
+        {
+            loseAudio.PlayOneShot(loseAudio.clip);
+        }
     }
 
     private void OnMouseDown()
     {
+        glassesAudio.Play();
         GameObject.Find("BonusManager").GetComponent<BonusManager>().IsManagerOn = true;
         GameObject.Find("BonusManager").GetComponent<BonusManager>().Manager();
         goDestroy = Instantiate(destroyed, transform.position, Quaternion.identity);
