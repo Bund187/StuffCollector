@@ -5,16 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeManager : MonoBehaviour {
 
-    bool changeScene;
-
-    public GameObject transition;
+    bool changeScene, clicAvailable;
+    float startTime;
+    
+    public GameObject transition, highScore;
     public AudioSource theme, tapAudio;
 
-	void Update () {
+    private void Awake()
+    {
+        startTime = Time.time;
+    }
+    void Update () {
+        if (Time.time >= startTime + 0.3)
+        {
+            clicAvailable = true;
+        }
+
         if (changeScene)
         {
+            
             transition.SetActive(true);
-            //StartCoroutine("FadeoutSound");
             theme.volume -= 0.009f;
             if (theme.volume <= 0)
             {
@@ -25,16 +35,10 @@ public class SceneChangeManager : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        tapAudio.Play();
-        changeScene = true;
+        if (clicAvailable && !highScore.GetComponent<HighScoreController>().IsOn)
+        {
+            tapAudio.Play();
+            changeScene = true;
+        }
     }
-
-    //IEnumerator FadeoutSound()
-    //{
-    //    while (theme.volume > 0)
-    //    {
-    //        theme.volume -= 0.1f;
-    //        yield return null;
-    //    }
-    //}
 }

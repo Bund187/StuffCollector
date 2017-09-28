@@ -5,8 +5,8 @@ using UnityEngine;
 public class TitleController : MonoBehaviour {
 
     public GameObject titleAppear, title;
-	
-	void Update ()
+
+    void Update ()
     { 
         if (titleAppear.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !titleAppear.GetComponent<Animator>().IsInTransition(0))
         {
@@ -15,6 +15,8 @@ public class TitleController : MonoBehaviour {
         if(title.activeSelf==true)
         {
             titleAppear.SetActive(false);
+            
         }
     }
+    
 }

@@ -18,12 +18,29 @@ public class Object_Star : Object_ {
     void Update()
     {
         Move();
+        if ((transform.position.y < -5))
+        {
+            if (starAppearAudio.isPlaying)
+            {
+                print("star audio playing");
+                if (starAppearAudio.volume > 0)
+                {
+                    starAppearAudio.volume -= 0.6f;
+                }
+            }
+        }
+        if(GameObject.Find("BrokenScreen") != null)
+        {
+            GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(starAppearAudio.gameObject);
+            starAppearAudio.volume = 0;
+        }
     }
 
     private void OnMouseDown()
     {
         starAppearAudio.Stop();
         starDestroyAudio.Play();
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(starDestroyAudio.gameObject);
         GameObject.Find("ScreenFlash").GetComponent<ScreenFlash>().IsFlashing = true;
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Stuff");
         if (gos.Length > 0)

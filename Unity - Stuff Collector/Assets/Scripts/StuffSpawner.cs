@@ -41,33 +41,33 @@ public class StuffSpawner : MonoBehaviour {
             if (repeatedI!=i){
                 repeatedI = i;
 
-                float distance = 0.3f;
+                float distance = 1.5f;
                 if (goGameController.GetComponent<GameController>().LevelNumber >= 1)
                 {
                     //Line for the Cassette
-                    if (objectType < 35)
+                    if (objectType <= 35)
                         Instantiate(prefab[0], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 }
-                if (goGameController.GetComponent<GameController>().LevelNumber >= 2)
+                if (goGameController.GetComponent<GameController>().LevelNumber >= 3)
                 {
                     randomQuantity = 30;
 
                     //Line for the TV
-                    if (objectType < 55 && objectType >= 35)
+                    if (objectType <= 55 && objectType > 35)
                         Instantiate(prefab[1], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 }
                 
                 //Line for the VR
-                if (objectType <= 58 && objectType >= 55)
+                if (objectType <= 58 && objectType > 55)
                     Instantiate(prefab[3], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
 
                 //Line for the Bombs
                 SpawnBomb(objectType, distance, i);
 
-                if (goGameController.GetComponent<GameController>().LevelNumber >= 3)
+                if (goGameController.GetComponent<GameController>().LevelNumber >= 5)
                 {
                     //Line for the Skate
-                    if (objectType <= 96 && objectType > 81)
+                    if (objectType <= 96 && objectType > 86)
                         Instantiate(prefab[5], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
                 }
                 if (goGameController.GetComponent<GameController>().LevelNumber >= 4)
@@ -85,7 +85,7 @@ public class StuffSpawner : MonoBehaviour {
     {
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Stuff");
 
-        if (objectType <= 81 && objectType > 58)
+        if (objectType <= 86 && objectType > 58)
             Instantiate(prefab[4], new Vector2(objetos[i].transform.position.x, objetos[i].transform.position.y + distance), Quaternion.identity);
     }
 

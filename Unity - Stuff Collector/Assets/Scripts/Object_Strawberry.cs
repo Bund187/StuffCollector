@@ -28,6 +28,7 @@ public class Object_Strawberry : Object_
         numberDestoyed++;
         goDestroy = Instantiate(destroyedDisk, transform.position, Quaternion.identity);
         GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(diskAudio.gameObject);
         GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 1000;
         ScoreStuff(score);
     }

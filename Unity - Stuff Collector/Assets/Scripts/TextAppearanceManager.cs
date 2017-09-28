@@ -38,6 +38,18 @@ public class TextAppearanceManager : MonoBehaviour {
         text.text = "";
         textShadow.text = "";
         index = 0;
-        //StopAllCoroutines();
+    }
+
+    public int Index
+    {
+        get
+        {
+            return index;
+        }
+
+        set
+        {
+            index = value;
+        }
     }
 }

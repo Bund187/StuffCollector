@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class EndManager : MonoBehaviour
 {
     bool isEnd;
+    GameObject[] audios;
 
-    public GameObject gameOverBackground, filter;
+    public GameObject gameOverBackground, filter, missClic, background, animBackground, showFigure;
     public GameObject[] gameOverGos;
     public Text totalTime;
     public AudioSource gameoverAudio;
@@ -21,9 +22,9 @@ public class EndManager : MonoBehaviour
             if (gameOverBackground.activeSelf)
             {
                 gameoverAudio.PlayOneShot(gameoverAudio.clip);
-
                 if (gameOverBackground.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !gameOverBackground.GetComponent<Animator>().IsInTransition(0))
                 {
+                    showFigure.GetComponent<CollectedStuffScore>().ShowActionFigure();
                     foreach (GameObject go in gameOverGos)
                     {
                         go.SetActive(true);
@@ -37,6 +38,14 @@ public class EndManager : MonoBehaviour
 
     public void End()
     {
+        background.SetActive(true);
+        animBackground.SetActive(false);
+        missClic.GetComponent<ClicPositionManager>().IsGameOver = true;
+        audios = GameObject.FindGameObjectsWithTag("Audio");
+        foreach(GameObject goAudio in audios)
+        {
+            goAudio.GetComponent<AudioSource>().volume = 0;
+        }
         if (isEnd)
         {
             GameObject.Find("TimeScore").GetComponent<TimeScore>().TimeRunning = false;

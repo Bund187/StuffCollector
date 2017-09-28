@@ -34,6 +34,8 @@ public class Object_Uranium : Object_ {
         GameObject.Find("BonusManager").GetComponent<BonusManager>().Manager();
         goDestroy = Instantiate(destroyed, transform.position, Quaternion.identity);
         GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(glassesAudio.gameObject);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(loseAudio.gameObject);
         GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 1500;
         ScoreStuff(score);
     }

@@ -8,11 +8,11 @@ public class BonusManager : MonoBehaviour {
     List<GameObject> gosBonus = new List<GameObject>();
     float timeStart, timeFinal;
     int heartCounter, bonusDestroyed;
-    bool isManagerOn;
+    bool isManagerOn, canFall;
     GameObject auxiliarHeart;
 
     public GameObject[] hearts = new GameObject[3];
-    public GameObject heartAnimation;
+    public GameObject heartAnimation, boundDown;
     public AudioSource winHeartAudio;
 
     private void Start()
@@ -23,8 +23,10 @@ public class BonusManager : MonoBehaviour {
     void Update()
     {
         timeFinal = Time.time;
-        if(isManagerOn)
+        if (isManagerOn)
+        {
             Timer();
+        }
     }
 
     public void BonusReached()
@@ -32,15 +34,16 @@ public class BonusManager : MonoBehaviour {
         //print("bonusdestroyed=" + bonusDestroyed + " gos Count" + gos.Count);
         if (bonusDestroyed == gos.Count)
         {
-            winHeartAudio.Play();
             if (heartCounter < 2)
             {
+                winHeartAudio.Play();
                 heartCounter++;
                 auxiliarHeart = Instantiate(heartAnimation, new Vector2(0,-4), Quaternion.identity);
                 auxiliarHeart.GetComponent<MetalHeartAnimation>().HeartDestiny = hearts[heartCounter];
                 hearts[heartCounter].SetActive(true);
                 bonusDestroyed = 0;
                 print("Add heart nº" + heartCounter + " nombre= " + hearts[heartCounter].name);
+                
             }
            
         }
@@ -60,6 +63,7 @@ public class BonusManager : MonoBehaviour {
     public void Manager()
     {
         timeStart = Time.time;
+        boundDown.SetActive(true);
         
         //Impedimos que se sigan creando nuevos objetos
         GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = true;
@@ -79,8 +83,9 @@ public class BonusManager : MonoBehaviour {
                 //Recorremos el list y borramos todos aquellos que esten fuera de la pantalla
                 if (gos[i].transform.position.y >= GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().objetos[0].transform.position.y)
                 {
-                    Destroy(gos[i]);
-                    gos.RemoveAt(i);
+                    //Destroy(gos[i]);
+                    //gos.RemoveAt(i);
+                    gos[i].transform.position = new Vector2(gos[i].transform.position.x, gos[i].transform.position.y - 1.5f);
                 }
             }
 
@@ -97,8 +102,9 @@ public class BonusManager : MonoBehaviour {
         {
             if (gos[i].transform.position.y >= GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().objetos[0].transform.position.y)
             {
-                Destroy(gos[i]);
-                gos.RemoveAt(i);
+                //Destroy(gos[i]);
+                //gos.RemoveAt(i);
+                gos[i].transform.position = new Vector2(gos[i].transform.position.x, gos[i].transform.position.y - 1.5f);
             }
         }
         print("Cantidad de objetos a destruir=" + gos.Count);
@@ -106,10 +112,10 @@ public class BonusManager : MonoBehaviour {
 
     public void Timer()
     {
-        if (timeFinal >= (timeStart + 3))
+        if ((timeFinal >= (timeStart + 3))||canFall)
         {
             bonusDestroyed = 0;
-
+            boundDown.SetActive(false);
             //Recorremos todos los objetos Bonus y los metemos en un List a la vez que los eliminamos de pantalla
             foreach (GameObject stuff in GameObject.FindGameObjectsWithTag("Bonus"))
             {
@@ -140,7 +146,7 @@ public class BonusManager : MonoBehaviour {
             gosBonus.Clear();
             GameObject.Find("RealSpawner").GetComponent<StuffSpawner>().NoSpawn = false;
             isManagerOn = false;
-            
+            canFall = false;
         }
     }
 

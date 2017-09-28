@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialCheckBoxManager : MonoBehaviour {
 
-    public GameObject tutorialTrue, tutorialFalse;
+    public GameObject tutorialTrue, tutorialFalse, highScore;
     public static bool isTutorialOn;
     public AudioSource tutorialAudio;
 
@@ -15,18 +15,21 @@ public class TutorialCheckBoxManager : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        tutorialAudio.Play();
-        if (gameObject.name.Contains("False"))
+        if (!highScore.GetComponent<HighScoreController>().IsOn)
         {
-            isTutorialOn = true;
-            tutorialTrue.SetActive(true);
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            isTutorialOn = false;
-            tutorialFalse.SetActive(true);
-            gameObject.SetActive(false);
+            tutorialAudio.Play();
+            if (gameObject.name.Contains("False"))
+            {
+                isTutorialOn = true;
+                tutorialTrue.SetActive(true);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                isTutorialOn = false;
+                tutorialFalse.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
     }
     

@@ -33,6 +33,8 @@ public class Object_Weight : Object_ {
         numberDestoyed++;
         goDestroy = Instantiate(destroyedSkate, transform.position, Quaternion.identity);
         GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(goDestroy);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(skateAudio.gameObject);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(loseAudio.gameObject);
         GameObject.Find("DestStuffScore").GetComponent<CollectedStuffScore>().RealScore += 1000;
         ScoreStuff(score);
     }
@@ -40,7 +42,7 @@ public class Object_Weight : Object_ {
     public override void Move()
     {
         
-        transform.Translate(Vector3.down * Time.deltaTime * (speed+ GameObject.Find("GameController").GetComponent<GameController>().LevelNumber));
+        transform.Translate(Vector3.down * Time.deltaTime * (speed*2/*+ GameObject.Find("GameController").GetComponent<GameController>().LevelNumber)*/));
     }
 
     //protected override void TouchAction()

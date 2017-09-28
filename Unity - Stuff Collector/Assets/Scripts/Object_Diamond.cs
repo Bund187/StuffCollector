@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ public class Object_Diamond : Object_ {
 
     public GameObject brokenTv, destroyedTv, score;
     public Sprite[] sprites = new Sprite[3];
-    public AudioSource[] tvAudio=new AudioSource[3];
+    public AudioSource[] tvAudio=new AudioSource[6];
     public AudioSource loseAudio;
 
     private void Start()
@@ -43,7 +42,15 @@ public class Object_Diamond : Object_ {
 
     private void OnMouseDown()
     {
-        tvAudio[durability].Play();
+
+        int indexAudio = Random.Range(0, 6);
+
+        while (tvAudio[indexAudio] == null) { 
+            indexAudio = Random.Range(0, 6);
+        }
+        tvAudio[indexAudio].Play();
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(tvAudio[indexAudio].gameObject);
+        GameObject.Find("GarbageDestroyer").GetComponent<GarbageManager>().ToDestroy.Add(loseAudio.gameObject);
         durability++;
         
         if (durability >= 3)

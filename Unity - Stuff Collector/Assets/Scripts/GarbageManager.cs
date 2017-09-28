@@ -30,20 +30,28 @@ public class GarbageManager : MonoBehaviour {
                 {
                     if (destr != null)
                     {
-                        if (destr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !destr.GetComponent<Animator>().IsInTransition(0))
+                        if (destr.GetComponent<AudioSource>() != null)
                         {
-                            if (destr.name.Contains("BombExplosion"))
+                            Destroy(destr, destr.GetComponent<AudioSource>().clip.length);
+                        }
+                        else if (destr.GetComponent<Animator>() != null)
+                        {
+
+                            if (destr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !destr.GetComponent<Animator>().IsInTransition(0))
                             {
-                                if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
+                                if (destr.name.Contains("BombExplosion"))
                                 {
-                                    GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd = true;
+                                    if (GameObject.Find("BonusManager").GetComponent<BonusManager>().HeartCounter < 0)
+                                    {
+                                        GameObject.Find("TheEnd").GetComponent<EndManager>().IsEnd = true;
+                                    }
+                                    else
+                                    {
+                                        GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
+                                    }
                                 }
-                                else
-                                {
-                                    GameObject.Find("BonusManager").GetComponent<BonusManager>().BonusLoosing();
-                                }
+                                Destroy(destr);
                             }
-                            Destroy(destr);
                         }
                     }
                 }

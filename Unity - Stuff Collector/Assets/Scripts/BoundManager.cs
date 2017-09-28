@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BoundManager : MonoBehaviour {
 
-	
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         print("entra colision=" + collision.gameObject.name);
-        Destroy(collision.gameObject);
+        if (collision.gameObject.tag.Equals("Bonus"))
+        {
+            print("entra colision por lo tanto movemos=" + collision.gameObject.name);
+            collision.transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y + 1);
+            //Destroy(collision.gameObject);
+        }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        print("Esta dentro colision=" + collision.gameObject.name);
-        Destroy(collision.gameObject);
-    }
 }

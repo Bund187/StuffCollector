@@ -6,9 +6,14 @@ using UnityEngine.UI;
 public class RetryManager : MonoBehaviour {
 
     public Text[] scoreToReset;
-    public GameObject stuffSpawner, gameOverBackg,theEnd, redFilter, gameController,timeController;
+    public Text actionFigureName;
+    public GameObject stuffSpawner, gameOverBackg,theEnd, redFilter, gameController,timeController, missClic, background, animBackground, realScoreObject;
     public GameObject[] gameoverGos;
     public AudioSource gameoverAudio;
+    public SpriteRenderer actionFigureFrame;
+    
+    private List<GameObject> gosToDestroy = new List<GameObject>();
+   
 
     void Update () {
         if (Input.GetMouseButtonDown(0))
@@ -20,6 +25,12 @@ public class RetryManager : MonoBehaviour {
 
     public void Reset()
     {
+        realScoreObject.GetComponent<CollectedStuffScore>().RealScore = 0;
+        actionFigureName.text = "";
+        actionFigureFrame.sprite = null;
+        background.SetActive(false);
+        animBackground.SetActive(true);
+        missClic.GetComponent<ClicPositionManager>().IsGameOver = false;
         gameoverAudio.Stop();
         foreach(Text go in scoreToReset)
         {
@@ -44,6 +55,15 @@ public class RetryManager : MonoBehaviour {
         }
         timeController.GetComponent<TimeScore>().TimeRunning = true;
         theEnd.GetComponent<EndManager>().IsEnd = false;
+
+        gosToDestroy = Utils.AddObjToList(GameObject.FindGameObjectsWithTag("Audio"),gosToDestroy);
+        gosToDestroy = Utils.AddObjToList(GameObject.FindGameObjectsWithTag("Anim"), gosToDestroy);
+
+        foreach (GameObject destroyGo in gosToDestroy)
+        {
+            Destroy(destroyGo);
+        }
+        gosToDestroy.Clear();
     }
     
 }
