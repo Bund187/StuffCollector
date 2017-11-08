@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class CloseHighScoreController : MonoBehaviour {
 
-    public GameObject highScoreOff,highScoreOn;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public GameObject highScoreOff,highScoreOn,highScoreManager;
+    public GameObject[] rankings;
+    public GameObject[] actionFigures;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +20,19 @@ public class CloseHighScoreController : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        foreach(GameObject rankin in rankings)
+        {
+            if (rankin.activeSelf)
+                rankin.SetActive(false);
+        }
+        foreach(GameObject af in actionFigures)
+        {
+            if (af.activeSelf)
+                af.SetActive(false);
+        }
+
         highScoreOn.SetActive(false);
         highScoreOff.SetActive(true);
+        highScoreManager.GetComponent<HighScoreController>().IsOn = false;
     }
 }
