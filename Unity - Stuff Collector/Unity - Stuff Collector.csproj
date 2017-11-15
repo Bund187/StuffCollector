@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\ClicPositionManager.cs" />
     <Compile Include="Assets\Scripts\CloseHighScoreController.cs" />
     <Compile Include="Assets\Scripts\CollectedStuffScore.cs" />
+    <Compile Include="Assets\Scripts\CreditsController.cs" />
     <Compile Include="Assets\Scripts\EndManager.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GarbageManager.cs" />

@@ -34,14 +34,14 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
-        TutorialTexts[0] = "Tha Rider here. There's some stuff falling from the sky and I'm gonna show you how destroy them.\r\n -Tap to continue-";
+        TutorialTexts[0] = "Tha Rider's here. There's some stuff falling from the sky and I'm gonna show you how destroy it.\r\n -Tap to continue-";
         TutorialTexts[1] = "First we got the Casette. Easy to break, just tap it.";
         TutorialTexts[2] = "Then we got the TV, tap it three times to destroy it.";
-        TutorialTexts[3] = "This here is the Roller Skate, also one tap to finish it. Falls pretty fast, though.";
-        TutorialTexts[4] = "The next one is the Bomb. Don't tap it or you'll die.";
+        TutorialTexts[3] = "This here is the Roller Skate, also one tap to finish it off. Falls pretty fast, though.";
+        TutorialTexts[4] = "The next one is the Bomb. Don't tap on it or you'll die.";
         TutorialTexts[5] = "Yes! The Star, tap it to clean the screen.";
         TutorialTexts[6] = "And the last one, The Virtual Glasses, when tapped all objects on screen will turn...";
-        TutorialTexts[7] = "...Floppy Disks! If you destroy all of them a life will be added to a max of 3.";
+        TutorialTexts[7] = "...Floppy Disks! If you destroy all of them a life will be added up to a max of 3.";
         TutorialTexts[8] = "Aight! That is all. Sit back, relax and enjoy. \r\n -Tap to continue-";
         firstTouch = true;
     }

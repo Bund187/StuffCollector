@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CloseHighScoreController : MonoBehaviour {
 
-    public GameObject highScoreOff,highScoreOn,highScoreManager;
+    public GameObject highScoreOff,highScoreOn,highScoreManager, tutorialFalse;
     public GameObject[] rankings;
     public GameObject[] actionFigures;
 
@@ -33,6 +33,7 @@ public class CloseHighScoreController : MonoBehaviour {
 
         highScoreOn.SetActive(false);
         highScoreOff.SetActive(true);
+        tutorialFalse.SetActive(true);
         highScoreManager.GetComponent<HighScoreController>().IsOn = false;
     }
 }

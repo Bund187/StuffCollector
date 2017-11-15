@@ -12,8 +12,8 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 5667fb372c2b292ccdec2a31aaac98fa UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 5667fb372c2b292ccdec2a31aaac98fa UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-cf169be3a81f6fa5385b074f1c368f2e Assembly-CSharp.dll:.SceneChangeManager
-e3788b35e13cdcb5b7dfc0a1b9a4964d Assembly-CSharp.dll:.CloseHighScoreController
+598e918b81b2dea65131eddca4924e29 Assembly-CSharp.dll:.SceneChangeManager
+c36a3948fbc8a90bf188c610cffc148e Assembly-CSharp.dll:.CloseHighScoreController
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -153,8 +153,9 @@ bfa59d9e0cdc636aab0d3638b41d91f7 Assembly-CSharp.dll:.TutorialObjDisk
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
+98fb488bf2635bec0c5c0d55983b4b84 Assembly-CSharp.dll:.CreditsController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MetalHeartAnimation
-a744248cf76a4bb6ab94afa6f3afcd2a Assembly-CSharp.dll:.RetryManager
+99f9dce4ffd8c19a3b3e3cd53410abd1 Assembly-CSharp.dll:.RetryManager
 61978e3de45a73c943e9f34913d7cd8f Assembly-CSharp.dll:.Object_Uranium
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BoundManager
 f2521d5881a12d76aa5db09859bea3a8 Assembly-CSharp.dll:.TutorialObjCasette
@@ -166,8 +167,8 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 27e841b3347e23b5d56c65cc2063f34f Assembly-CSharp.dll:.TutorialObjStar
 15bced11ade20fd77dda6074a5420256 Assembly-CSharp.dll:.TutorialObjGlasses
-7cf6c37c647ba2516a3596f8d64cfbcf Assembly-CSharp.dll:.HighScoreController
+0dc80d7f17539db20a0ceec088bdfd0f Assembly-CSharp.dll:.HighScoreController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TimeScore
 355a864b5a737eb8e904d3a11074f1e6 Assembly-CSharp.dll:.StuffSpawner
-ffd692c30868cb233720af9e3c9ccc74 Assembly-CSharp.dll:.EndManager
+354a22ce03e2c84b5e6c748d5d775604 Assembly-CSharp.dll:.EndManager
 cb28df4645aeda69332f242fee5629e4 Assembly-CSharp.dll:.Object_Weight

@@ -9,7 +9,7 @@ public class RetryManager : MonoBehaviour {
     public Text actionFigureName;
     public GameObject stuffSpawner, gameOverBackg,theEnd, redFilter, gameController,timeController, missClic, background, animBackground, realScoreObject;
     public GameObject[] gameoverGos;
-    public AudioSource gameoverAudio;
+    public AudioSource gameoverAudio, mainThemeAudio;
     public SpriteRenderer actionFigureFrame;
     
     private List<GameObject> gosToDestroy = new List<GameObject>();
@@ -32,7 +32,8 @@ public class RetryManager : MonoBehaviour {
         animBackground.SetActive(true);
         missClic.GetComponent<ClicPositionManager>().IsGameOver = false;
         gameoverAudio.Stop();
-        foreach(Text go in scoreToReset)
+        mainThemeAudio.Play();//OneShot(mainThemeAudio.clip);
+        foreach (Text go in scoreToReset)
         {
             if (go.name.Equals("TimeScore"))
                 go.text = "00:00";

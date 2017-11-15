@@ -1,0 +1,65 @@
+Initialize engine version: 2017.1.0f3 (472613c02cf7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   22.21.13.8205
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\Projects\Mobile\StuffCollector\Unity - Stuff Collector\Builds\StuffDestroyerPC_2.0_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.190 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.978410 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 10.570809 ms
+
+Unloading 394 unused Assets to reduce memory usage. Loaded Objects now: 1516.
+Total: 2.524638 ms (FindLiveObjects: 0.130630 ms CreateObjectMapping: 0.063123 ms MarkObjects: 0.302465 ms  DeleteObjects: 2.027835 ms)
+
+MissingMethodException: Cannot find the requested method.
+  at (wrapper managed-to-native) UnityEngine.AndroidJNI:INTERNAL_CALL_ExceptionOccurred (intptr&)
+  at UnityEngine.AndroidJNI.ExceptionOccurred () [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJNISafe.CheckException () [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJNISafe.FindClass (System.String name) [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaObject.get_JavaLangClass () [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaObject.FindClass (System.String name) [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaClass._AndroidJavaClass (System.String className) [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaClass..ctor (System.String className) [0x00000] in <filename unknown>:0 
+  at AndroidManager.BackButton () [0x00000] in <filename unknown>:0 
+  at AndroidManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+MissingMethodException: Cannot find the requested method.
+  at (wrapper managed-to-native) UnityEngine.AndroidJNI:INTERNAL_CALL_ExceptionOccurred (intptr&)
+  at UnityEngine.AndroidJNI.ExceptionOccurred () [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJNISafe.CheckException () [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJNISafe.FindClass (System.String name) [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaObject.get_JavaLangClass () [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaObject.FindClass (System.String name) [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaClass._AndroidJavaClass (System.String className) [0x00000] in <filename unknown>:0 
+  at UnityEngine.AndroidJavaClass..ctor (System.String className) [0x00000] in <filename unknown>:0 
+  at AndroidManager.BackButton () [0x00000] in <filename unknown>:0 
+  at AndroidManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 4338 -> priority: 1 
+  Thread -> id: 31e8 -> priority: 1 

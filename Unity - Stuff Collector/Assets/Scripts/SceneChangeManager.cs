@@ -8,7 +8,7 @@ public class SceneChangeManager : MonoBehaviour {
     bool changeScene, clicAvailable;
     float startTime;
     
-    public GameObject transition, highScore;
+    public GameObject transition, highScore, loading;
     public AudioSource theme, tapAudio;
 
     private void Awake()
@@ -26,6 +26,10 @@ public class SceneChangeManager : MonoBehaviour {
             
             transition.SetActive(true);
             theme.volume -= 0.009f;
+            if (theme.volume <= 0.1f)
+            {
+                loading.SetActive(true);
+            }
             if (theme.volume <= 0)
             {
                 SceneManager.LoadScene("MainScene", LoadSceneMode.Single);

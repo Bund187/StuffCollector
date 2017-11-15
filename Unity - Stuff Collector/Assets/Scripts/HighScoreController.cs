@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class HighScoreController : MonoBehaviour {
 
-    public GameObject showHighScoreOn, close;
+    public GameObject showHighScoreOn, close, tutorialTrue, tutorialFalse;
     public GameObject[] rankings;
     public GameObject[] actionFigures;
+    public AudioSource highScoreAudio;
     bool isOn;
 
     // Update is called once per frame
@@ -22,9 +23,11 @@ public class HighScoreController : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        highScoreAudio.Play();
         isOn = true;
         showHighScoreOn.SetActive(true);
-
+        tutorialTrue.SetActive(false);
+        tutorialFalse.SetActive(false);
     }
 
     public void ShowActionFigure()

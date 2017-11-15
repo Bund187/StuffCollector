@@ -12,7 +12,7 @@ public class EndManager : MonoBehaviour
     public GameObject gameOverBackground, filter, missClic, background, animBackground, showFigure;
     public GameObject[] gameOverGos;
     public Text totalTime;
-    public AudioSource gameoverAudio;
+    public AudioSource gameoverAudio, mainThemeAudio;
 
     private void Update()
     {
@@ -21,6 +21,7 @@ public class EndManager : MonoBehaviour
             End();
             if (gameOverBackground.activeSelf)
             {
+                mainThemeAudio.Stop();
                 gameoverAudio.PlayOneShot(gameoverAudio.clip);
                 if (gameOverBackground.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !gameOverBackground.GetComponent<Animator>().IsInTransition(0))
                 {
